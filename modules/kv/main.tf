@@ -1,18 +1,22 @@
-resource "vault_mount" "kvv2" {
-  count       = (var.kv_version == "v2") ? 1 : 0
-
+resource "vault_mount" "kv" {
   path        = var.path
   type        = "kv"
-  options     = { version = "2" }
-  description = "KV Version 2 secret engine mount"
+  options     = { version = var.kv_version }
+  description = "KV Version ${var.kv_version} secret engine mount"
 }
 
 resource "vault_kv_secret_v2" "secret" {
-  count = (var.kv_version == "v2") ? 1 : 0
+  count = (var.kv_version == 2) ? 1 : 0
 
-  mount               = vault_mount.kvv2[0].path
-  name                = "secret"
-  cas                 = 1
+  mount               = vault_mount.kv.path
+  name                = var.secret_name
   delete_all_versions = true
   data_json           = jsonencode(var.secrets)
+}
+
+resource "vault_kv_secret" "secret" {
+  count = (var.kv_version == 1) ? 1 : 0
+
+  path      = "${vault_mount.kv.path}/${var.secret_name}"
+  data_json = jsonencode(var.secrets)
 }

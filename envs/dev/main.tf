@@ -8,3 +8,7 @@ module "vault_local" {
     password = "password2"
   }
 }
+
+module "transit_local" {
+  source = "../../modules/transit"
+}

@@ -1,6 +1,6 @@
 variable "path" {
   type        = string
-  description = "Path at which the transit engine will be enabled"
+  description = "Path at which the userpass auth will be enabled"
   default     = "userpass"
 }
 

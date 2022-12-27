@@ -32,7 +32,11 @@ data "vault_policy_document" "first_policy_doc" {
     capabilities = ["read", "delete"]
     description  = "Allow reading kv secret versions and delete all version"
   }
-
+  rule {
+    path         = "kv-secret2/+/second-secret"
+    capabilities = ["read", "create", "update"]
+    description  = "Allow reading kv secret"
+  }
   rule {
     path         = "kv-secret2/destroy/secret"
     capabilities = ["update"]

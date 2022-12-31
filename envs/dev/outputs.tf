@@ -9,3 +9,7 @@ output "approle_secret_id" {
 output "auth_backend" {
   value = module.subu_entity.auth_backend
 }
+
+output "entity_users" {
+  value = module.group.users
+}

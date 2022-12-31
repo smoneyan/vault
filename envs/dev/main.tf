@@ -3,9 +3,15 @@ module "vault_local" {
 
   kv_version = "2"
   path       = "kv-secret2"
-  secrets = {
-    username = "admin"
-    password = "password2"
+  secret_data = {
+    secret = {
+      path = "secret"
+      secrets = {
+        username = "admin"
+        password = "password2"
+      }
+    }
+
   }
 }
 
@@ -19,6 +25,8 @@ module "users" {
   create_userpass = true
   users = {
     admin = "password"
+    alice = "password"
+    bob   = "password"
   }
   policies = ["first_policy"]
 }

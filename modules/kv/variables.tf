@@ -14,13 +14,28 @@ variable "path" {
   default     = "kv"
 }
 
-variable "secret_name" {
-  type        = string
-  description = "Secret name"
-  default     = "secret"
+# variable "secret_name" {
+#   type        = string
+#   description = "Secret name"
+#   default     = "secret"
+# }
+
+# variable "secrets" {
+#   type        = map(string)
+#   description = "Map of key/value pairs that will be sotred as secrets"
+# }
+
+
+variable "enable_engine" {
+  type        = bool
+  description = "Feature flag to enable secret engine. Otherwise assumption is the engine is already mounted"
+  default     = true
 }
 
-variable "secrets" {
-  type        = map(string)
-  description = "Map of key/value pairs that will be sotred as secrets"
+variable "secret_data" {
+  type = map(object({
+    path    = string
+    secrets = map(string)
+  }))
+  description = "Feature flag to enable secret engine. Otherwise assumption is the engine is already mounted"
 }

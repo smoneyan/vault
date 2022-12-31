@@ -14,3 +14,8 @@ variable "type" {
   type    = string
   default = "aes256-gcm96"
 }
+
+variable "create_policies" {
+  type    = bool
+  default = true
+}

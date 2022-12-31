@@ -15,6 +15,8 @@ module "transit_local" {
 
 module "users" {
   source = "../../modules/userpass"
+
+  create_userpass = true
   users = {
     admin = "password"
   }

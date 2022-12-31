@@ -11,6 +11,7 @@ terraform {
 
 provider "vault" {
   # Configuration options
-  # Set env variable VAULT_ADDR
-  # Set env variable VAULT_TOKEN
+  # Start the vault server in dev mode `vault server -dev -dev-root-token-id="root"`
+  # Set env variable VAULT_ADDR `export VAULT_ADDR=http://127.0.0.1:8200` 
+  # Set env variable VAULT_TOKEN `export VAULT_TOKEN=root`
 }

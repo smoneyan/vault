@@ -15,3 +15,15 @@ variable "policies" {
   description = "list of policies"
   default     = ["default"]
 }
+
+variable "default_lease_ttl" {
+  type        = string
+  description = "checks whether userpass mount needs to be created or not"
+  default     = "768h"
+}
+
+variable "max_lease_ttl" {
+  type        = string
+  description = "checks whether userpass mount needs to be created or not"
+  default     = "768h"
+}

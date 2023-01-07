@@ -1,5 +1,10 @@
 resource "vault_auth_backend" "approle" {
   type = "approle"
+  path = var.path
+  tune {
+    default_lease_ttl = var.default_lease_ttl
+    max_lease_ttl     = var.max_lease_ttl
+  }
 }
 
 resource "vault_approle_auth_backend_role" "role" {

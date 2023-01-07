@@ -1,5 +1,5 @@
 resource "vault_identity_group" "group" {
-  name     = var.group_name
+  name = var.group_name
 
   type     = "internal"
   policies = var.group_policies
@@ -19,5 +19,5 @@ data "vault_identity_entity" "users" {
 }
 
 locals {
-  ids = [for user in data.vault_identity_entity.users: user.id]
+  ids = [for user in data.vault_identity_entity.users : user.id]
 }

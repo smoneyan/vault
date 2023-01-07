@@ -11,6 +11,6 @@ variable "group_policies" {
 }
 
 variable "group_members" {
-  type = set(string)
-  default = [ "alice_entity", "bob_enitty"]
+  type    = set(string)
+  default = ["alice_entity", "bob_enitty"]
 }

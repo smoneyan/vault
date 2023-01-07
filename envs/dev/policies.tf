@@ -18,6 +18,18 @@ data "vault_policy_document" "first_policy_doc" {
   }
 
   rule {
+    path         = "auth/token/lookup-self"
+    capabilities = ["read"]
+    description  = "Allow to lookup token info"
+  }
+
+  rule {
+    path         = "auth/token/lookup"
+    capabilities = ["update"]
+    description  = "Allow to read other token information"
+  }
+
+  rule {
     path         = "kv-secret2/metadata"
     capabilities = ["list"]
     description  = "Allow lsiting kv secret"
@@ -57,6 +69,11 @@ data "vault_policy_document" "jenkins_policy_doc" {
     path         = "kv-secret2/*"
     capabilities = ["create", "read", "update", "delete"]
     description  = "Allow lsiting kv secret"
+  }
+
+  rule {
+    path         = "auth/token/create"
+    capabilities = ["update"]
   }
 }
 

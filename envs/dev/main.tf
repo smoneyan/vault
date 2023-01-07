@@ -28,11 +28,23 @@ module "users" {
     alice = "password"
     bob   = "password"
   }
-  policies = ["first_policy"]
+  policies          = ["first_policy", "default"]
+  default_lease_ttl = "30s"
+  max_lease_ttl     = "60s"
 }
 
 module "approle" {
-  source    = "../../modules/approle"
-  role_name = "jenkins"
-  policies  = ["jenkins_policy"]
+  source            = "../../modules/approle"
+  role_name         = "jenkins"
+  policies          = ["jenkins_policy"]
+  default_lease_ttl = "30s"
+  max_lease_ttl     = "60s"
+}
+
+resource "vault_audit" "test" {
+  type = "file"
+
+  options = {
+    file_path = "/tmp/vault-audit.log"
+  }
 }

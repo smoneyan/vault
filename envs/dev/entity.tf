@@ -88,6 +88,10 @@ module "subu_entity" {
       policies    = ["subu_policy"]
     }
   }
+
+  depends_on = [
+    module.users
+  ]
 }
 
 module "bob_entity" {
@@ -102,6 +106,10 @@ module "bob_entity" {
       policies    = ["smoneyan_policy"]
     }
   }
+
+  depends_on = [
+    module.users
+  ]
 }
 
 module "alice_entity" {
@@ -116,6 +124,10 @@ module "alice_entity" {
       policies    = ["smoneyan_policy"]
     }
   }
+
+  depends_on = [
+    module.users
+  ]
 }
 
 module "policy_template_secrets" {

@@ -1,9 +1,15 @@
 module "group" {
   source = "../../modules/group"
-  
-  group_name = "devops"
-  group_members = ["alice_entity", "bob_entity"]
+
+  group_name     = "devops"
+  group_members  = ["alice_entity", "bob_entity"]
   group_policies = ["group_policy"]
+
+  depends_on = [
+    module.users,
+    module.alice_entity,
+    module.bob_entity,
+  ]
 }
 
 data "vault_policy_document" "group_policy_doc" {
